@@ -12,7 +12,6 @@
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:text="Conteggio:"
-        app:layout_constraintBottom_toTopOf="@+id/btnChange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cameraButton" />
 
@@ -23,7 +22,7 @@
         android:text="Camera"
         app:layout_constraintBottom_toBottomOf="@+id/detectButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintHorizontal_bias="0.896"
         app:layout_constraintStart_toEndOf="@+id/detectButton"
         app:layout_constraintTop_toTopOf="@+id/detectButton"
         app:layout_constraintVertical_bias="0.0" />
@@ -32,9 +31,9 @@
         android:id="@+id/detectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="24dp"
         android:layout_marginBottom="126dp"
-        android:text="Detect"
+        android:text="Inferenza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -105,15 +104,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLeft"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btnChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtLeft"
-        app:layout_constraintTop_toBottomOf="@+id/cameraButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

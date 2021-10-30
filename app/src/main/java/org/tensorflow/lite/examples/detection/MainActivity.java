@@ -72,21 +72,12 @@ public class MainActivity extends AppCompatActivity {
         txtLeft = findViewById(R.id.txtLeft);
         txtRight = findViewById(R.id.txtRight);
         txtConteggio = findViewById(R.id.txtConteggio);
-        changeActivity = findViewById(R.id.btnChange);
 
 
         cameraButton.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, DetectorActivity.class)));
 
 
-        changeActivity.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                //Intent i = new Intent(getApplicationContext(),digit_recognition.class);
-                //startActivity(i);
-            }
-        });
 
         detectButton.setOnClickListener(v -> {
             txtConteggio.setText("");
@@ -225,6 +216,8 @@ public class MainActivity extends AppCompatActivity {
                 String title = "";
                 title += result.getTitle() + " ";
                 title += result.getConfidence();
+
+
                 canvas.drawText(title, result.getLocation().left, result.getLocation().bottom, paint2);
 
                 /*
@@ -269,33 +262,60 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-        //CALCOLO IL PERCORSO PER I POSTIT AGLI OGGETTI ATTRIBUTO
-        calcolaPercorsoPostitAttributi(postit,attributi, paint);
+        calcolaPercorsoPostitAttributi(postit, attributi, paint);
+        calcolaPercorsoAttributiSmart(attributi, smartObjects, paint);
+
         imageView.setImageBitmap(bitmap);
+    }
+
+    private void calcolaPercorsoAttributiSmart(ArrayList<Classifier.Recognition> attributi, ArrayList<Classifier.Recognition> smartObjects, Paint paint) {
+        for (int i = 0; i < attributi.size(); i++){
+            double minDist = 9999;
+            float xVicino = 0, yVicino = 0;
+            float x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+            for (Classifier.Recognition s : smartObjects){
+                x1 = attributi.get(i).getLocation().centerX();
+                x2 = s.getLocation().centerX();
+                y1 = attributi.get(i).getLocation().centerY();
+                y2 = s.getLocation().centerY();
+
+                double dis=Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+                if (dis < minDist){
+                    minDist = dis;
+                    xVicino = x2;
+                    yVicino = y2;
+                }
+            }
+            float xp = 0, yp = 0;
+            xp = attributi.get(i).getLocation().centerX();
+            yp = attributi.get(i).getLocation().centerY();
+            canvas.drawLine(xp, yp, xVicino, yVicino, paint);
+        }
     }
 
     private void calcolaPercorsoPostitAttributi(ArrayList<Classifier.Recognition> postit, ArrayList<Classifier.Recognition> attributi, Paint paint) {
 
-
-        for (Classifier.Recognition p : postit){
-            double minDist = 0;
+        for (int i = 0; i < postit.size(); i++){
+            double minDist = 9999;
+            float xVicino = 0, yVicino = 0;
             float x1 = 0, x2 = 0, y1 = 0, y2 = 0;
-            //CICLO CHE CALCOLA LA DISTANZA DEI POSTIT AI RELATIVI ATTRIBUTI
-            for (int i = 0; i < attributi.size(); i++){
-                x1 = p.getLocation().centerX();
-                x2 = attributi.get(i).getLocation().centerX();
-
-                y1 = p.getLocation().centerY();
-                y2 = attributi.get(i).getLocation().centerY();
+            for (Classifier.Recognition a : attributi){
+                x1 = postit.get(i).getLocation().centerX();
+                x2 = a.getLocation().centerX();
+                y1 = postit.get(i).getLocation().centerY();
+                y2 = a.getLocation().centerY();
 
                 double dis=Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
-                if (minDist > dis){
+                if (dis < minDist){
                     minDist = dis;
+                    xVicino = x2;
+                    yVicino = y2;
                 }
-
             }
-
-            canvas.drawLine(x1, y1, x2, y2, paint);
-        }
+            float xp = 0, yp = 0;
+            xp = postit.get(i).getLocation().centerX();
+            yp = postit.get(i).getLocation().centerY();
+            canvas.drawLine(xp, yp, xVicino, yVicino, paint);
+            }
     }
 }
