@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "507584454205",
+    "project_id": "textrecognition-be53a",
+    "storage_bucket": "textrecognition-be53a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507584454205:android:17508017c23d5df4d85454",
+        "android_client_info": {
+          "package_name": "com.samapps310.textrecognition"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507584454205-abgadb3op24h9holi9f1h6522p3vmsrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb6BGJGpO7eQH0cTdlqRTKl6EFnom74NE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507584454205-abgadb3op24h9holi9f1h6522p3vmsrg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507584454205:android:d5ef0691c2dbe4d8d85454",
+        "android_client_info": {
+          "package_name": "org.tensorflow.lite.examples.detection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "507584454205-abgadb3op24h9holi9f1h6522p3vmsrg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb6BGJGpO7eQH0cTdlqRTKl6EFnom74NE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507584454205-abgadb3op24h9holi9f1h6522p3vmsrg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
